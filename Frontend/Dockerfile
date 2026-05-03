@@ -31,4 +31,4 @@ ENV PORT=3000
 EXPOSE 3000
 
 # Serve the SPA (-s enables single-page-app mode for React Router)
-CMD ["sh", "-c", "serve -s dist -l $PORT"]
+CMD ["sh", "-c", "serve -s dist -l tcp://0.0.0.0:$PORT"]
