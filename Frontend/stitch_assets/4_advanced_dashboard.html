@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fff8f5;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#eedfdc",
+                        "surface-variant": "#ebe1da",
+                        "secondary": "#47645c",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f9efe8",
+                        "tertiary": "#675c5a",
+                        "error": "#ba1a1a",
+                        "on-background": "#1f1b17",
+                        "surface-container-highest": "#ebe1da",
+                        "surface": "#fff8f5",
+                        "surface-container": "#f6ece5",
+                        "secondary-fixed-dim": "#adcdc3",
+                        "on-surface-variant": "#50453b",
+                        "primary": "#7f5629",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#fcf2eb",
+                        "tertiary-fixed-dim": "#d2c3c1",
+                        "on-tertiary-container": "#403735",
+                        "on-secondary-container": "#4d6a62",
+                        "on-primary-container": "#543106",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#ada09d",
+                        "secondary-container": "#c9eadf",
+                        "primary-container": "#cc9966",
+                        "primary-fixed": "#ffdcbd",
+                        "on-tertiary-fixed": "#211a18",
+                        "on-surface": "#1f1b17",
+                        "inverse-primary": "#f3bc86",
+                        "surface-dim": "#e2d8d2",
+                        "surface-container-high": "#f0e6e0",
+                        "on-primary-fixed-variant": "#643e13",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#2c1600",
+                        "inverse-surface": "#352f2b",
+                        "surface-tint": "#7f5629",
+                        "primary-fixed-dim": "#f3bc86",
+                        "on-secondary-fixed-variant": "#2f4c44",
+                        "on-secondary-fixed": "#02201a",
+                        "secondary-fixed": "#c9eadf",
+                        "on-error-container": "#93000a",
+                        "outline": "#827569",
+                        "background": "#fff8f5",
+                        "outline-variant": "#d4c4b6",
+                        "on-tertiary-fixed-variant": "#4e4543",
+                        "surface-bright": "#fff8f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "margin": "32px",
+                        "lg": "40px",
+                        "gutter": "24px",
+                        "xl": "64px",
+                        "base": "8px"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex flex-col w-72 h-[calc(100vh-32px)] m-4 bg-surface-container dark:bg-stone-900 rounded-lg shadow-[0px_15px_35px_rgba(89,79,77,0.12)] p-6 space-y-8 overflow-y-auto">
+<div class="flex items-center gap-3 px-2">
+<div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary" data-icon="grid_view">grid_view</span>
+</div>
+<div>
+<h1 class="text-lg font-bold text-on-surface">Productivity Flow</h1>
+<p class="text-[10px] uppercase tracking-wider text-outline font-bold">Main Workspace</p>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary rounded-full py-4 px-6 flex items-center justify-center gap-2 font-button text-button shadow-lg shadow-primary/20 active:scale-98 transition-all hover:translate-x-1">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+            New Task
+        </button>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-6 py-4 bg-primary text-on-primary rounded-full shadow-lg shadow-primary/20 transition-all font-label-lg text-label-lg" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-6 py-4 text-on-surface-variant hover:bg-secondary/10 rounded-full transition-all font-label-lg text-label-lg hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+                Projects
+            </a>
+<a class="flex items-center gap-3 px-6 py-4 text-on-surface-variant hover:bg-secondary/10 rounded-full transition-all font-label-lg text-label-lg hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="view_kanban">view_kanban</span>
+                Kanban
+            </a>
+<a class="flex items-center gap-3 px-6 py-4 text-on-surface-variant hover:bg-secondary/10 rounded-full transition-all font-label-lg text-label-lg hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Team
+            </a>
+</nav>
+<div class="pt-8 border-t border-outline-variant/30">
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-secondary/10 rounded-full transition-all font-label-lg text-label-lg hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-secondary/10 rounded-full transition-all font-label-lg text-label-lg hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Sign Out
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+<!-- Top App Bar -->
+<header class="bg-surface-container dark:bg-stone-900 rounded-full mt-4 mx-4 shadow-[0px_10px_30px_rgba(89,79,77,0.05)] z-20">
+<div class="flex justify-between items-center px-6 py-3 max-w-7xl mx-auto">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-12 pr-6 py-2.5 bg-surface border border-outline-variant/50 rounded-full focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none text-sm transition-all" placeholder="Search tasks..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2.5 text-on-surface-variant hover:bg-primary/5 rounded-full transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2.5 text-on-surface-variant hover:bg-primary/5 rounded-full transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="p-2.5 text-on-surface-variant hover:bg-primary/5 rounded-full transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="ml-4 w-10 h-10 rounded-full overflow-hidden border-2 border-surface shadow-sm ring-1 ring-primary/10">
+<img alt="User avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uiRzvXAHk3p3eWyomOWXUL9zXbpypZ6jwHuFGjbD1SJaY-JIpU01O7oGLu5EH8QtV1DyjBkYKc3bUqCXuFRZL0aGfvywH3UD7Eqk4xohSaFTdw5bEdfjftLRCX6gH8cEGjmi2KUvJEt-u6TdZEjelXWDqHaIcPL-56G9hpmPrMPUqPggMdSb635pxtSiFcsS1nUclWqX3qyQI-tDCIYesOnt4_VsDtW5mvRZTzIX6kZyV0GGibBl7OTyUM-AezYF6ULXsIdWdwZNw"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 overflow-y-auto p-4 md:p-8 space-y-8">
+<!-- Greeting -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-h1 text-h1 text-on-background">Good Morning, Alex</h2>
+<p class="font-body-md text-body-md text-outline">You have 12 tasks to complete today. Stay focused and productive.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 bg-secondary text-on-secondary rounded-full flex items-center gap-2 font-button text-button shadow-lg shadow-secondary/20 hover:scale-105 transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+                        Daily Report
+                    </button>
+</div>
+</section>
+<!-- Stats Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-surface-container p-8 rounded-lg shadow-sm hover:shadow-md transition-all flex flex-col items-start gap-4">
+<div class="p-3 bg-primary-container/20 text-primary-container rounded-full">
+<span class="material-symbols-outlined" data-icon="task_alt">task_alt</span>
+</div>
+<div>
+<p class="text-label-md font-label-md text-outline">Total Tasks</p>
+<p class="text-h2 font-h2 text-on-background">248</p>
+</div>
+</div>
+<div class="bg-surface-container p-8 rounded-lg shadow-sm hover:shadow-md transition-all flex flex-col items-start gap-4">
+<div class="p-3 bg-secondary/10 text-secondary rounded-full">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<div>
+<p class="text-label-md font-label-md text-outline">In Progress</p>
+<p class="text-h2 font-h2 text-on-background">12</p>
+</div>
+</div>
+<div class="bg-surface-container p-8 rounded-lg shadow-sm hover:shadow-md transition-all flex flex-col items-start gap-4">
+<div class="p-3 bg-secondary-container/30 text-on-secondary-fixed-variant rounded-full">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<p class="text-label-md font-label-md text-outline">Completed</p>
+<p class="text-h2 font-h2 text-on-background">186</p>
+</div>
+</div>
+<div class="bg-surface-container p-8 rounded-lg shadow-sm hover:shadow-md transition-all flex flex-col items-start gap-4">
+<div class="p-3 bg-error-container text-error rounded-full">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+</div>
+<div>
+<p class="text-label-md font-label-md text-outline">Overdue</p>
+<p class="text-h2 font-h2 text-on-background">4</p>
+</div>
+</div>
+</section>
+<!-- Visual Analytics & Activity -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Task Progress Pie Chart -->
+<div class="lg:col-span-4 bg-surface-container p-8 rounded-lg shadow-sm flex flex-col items-center">
+<div class="w-full flex justify-between items-center mb-6">
+<h3 class="text-h3 font-h3 text-on-background">Task Status</h3>
+<span class="material-symbols-outlined text-outline cursor-pointer" data-icon="info">info</span>
+</div>
+<div class="relative w-48 h-48 mb-8">
+<!-- Custom CSS Circle Chart Representation -->
+<div class="absolute inset-0 rounded-full border-[16px] border-primary-container"></div>
+<div class="absolute inset-0 rounded-full border-[16px] border-secondary border-t-transparent border-l-transparent transform rotate-45"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-h2 font-h2 text-on-background">75%</span>
+<span class="text-label-md text-outline">Complete</span>
+</div>
+</div>
+<div class="w-full space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="text-body-sm text-on-surface-variant">Completed</span>
+</div>
+<span class="font-bold text-on-background">186</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<span class="text-body-sm text-on-surface-variant">Pending</span>
+</div>
+<span class="font-bold text-on-background">62</span>
+</div>
+</div>
+</div>
+<!-- Weekly Progress Graph -->
+<div class="lg:col-span-8 bg-surface-container p-8 rounded-lg shadow-sm flex flex-col">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="text-h3 font-h3 text-on-background">Weekly Progress</h3>
+<p class="text-body-sm text-outline">Task completion trends over the last 7 days</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 bg-primary/10 text-primary text-label-md font-label-md rounded-full">Last 7 Days</button>
+</div>
+</div>
+<div class="flex-1 flex items-end justify-between gap-2 h-64 mt-4">
+<!-- Monday -->
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary-container/20 rounded-full h-full relative flex flex-col justify-end">
+<div class="w-full bg-primary-container rounded-full" style="height: 45%"></div>
+<div class="w-full bg-secondary rounded-full absolute bottom-0" style="height: 30%"></div>
+</div>
+<span class="text-label-md text-outline">Mon</span>
+</div>
+<!-- Tuesday -->
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary-container/20 rounded-full h-full relative flex flex-col justify-end">
+<div class="w-full bg-primary-container rounded-full" style="height: 65%"></div>
+<div class="w-full bg-secondary rounded-full absolute bottom-0" style="height: 50%"></div>
+</div>
+<span class="text-label-md text-outline">Tue</span>
+</div>
+<!-- Wednesday -->
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary-container/20 rounded-full h-full relative flex flex-col justify-end">
+<div class="w-full bg-primary-container rounded-full" style="height: 55%"></div>
+<div class="w-full bg-secondary rounded-full absolute bottom-0" style="height: 40%"></div>
+</div>
+<span class="text-label-md text-outline">Wed</span>
+</div>
+<!-- Thursday -->
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary-container/20 rounded-full h-full relative flex flex-col justify-end">
+<div class="w-full bg-primary-container rounded-full" style="height: 85%"></div>
+<div class="w-full bg-secondary rounded-full absolute bottom-0" style="height: 70%"></div>
+</div>
+<span class="text-label-md text-outline">Thu</span>
+</div>
+<!-- Friday -->
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary-container/20 rounded-full h-full relative flex flex-col justify-end">
+<div class="w-full bg-primary-container rounded-full" style="height: 60%"></div>
+<div class="w-full bg-secondary rounded-full absolute bottom-0" style="height: 45%"></div>
+</div>
+<span class="text-label-md text-outline">Fri</span>
+</div>
+<!-- Saturday -->
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary-container/20 rounded-full h-full relative flex flex-col justify-end">
+<div class="w-full bg-primary-container rounded-full" style="height: 25%"></div>
+<div class="w-full bg-secondary rounded-full absolute bottom-0" style="height: 15%"></div>
+</div>
+<span class="text-label-md text-outline">Sat</span>
+</div>
+<!-- Sunday -->
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary-container/20 rounded-full h-full relative flex flex-col justify-end">
+<div class="w-full bg-primary-container rounded-full" style="height: 20%"></div>
+<div class="w-full bg-secondary rounded-full absolute bottom-0" style="height: 10%"></div>
+</div>
+<span class="text-label-md text-outline">Sun</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Section: Recent Activity & Team -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Recent Activity Feed -->
+<div class="lg:col-span-12 bg-surface-container p-8 rounded-lg shadow-sm">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-h3 font-h3 text-on-background">Recent Activity</h3>
+<button class="px-4 py-2 text-primary font-button text-button hover:bg-primary/5 rounded-full transition-all">View All</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Notification 1 -->
+<div class="flex items-start gap-4 p-4 bg-surface rounded-lg border border-outline-variant/30 hover:border-primary/30 transition-all group">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-sm">edit_square</span>
+</div>
+<div>
+<p class="text-body-sm text-on-background"><span class="font-bold">Utkarsh</span> updated task status</p>
+<p class="text-[10px] text-outline mt-1 uppercase tracking-widest font-bold">Just Now</p>
+</div>
+</div>
+<!-- Notification 2 -->
+<div class="flex items-start gap-4 p-4 bg-surface rounded-lg border border-outline-variant/30 hover:border-primary/30 transition-all group">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm">person_add</span>
+</div>
+<div>
+<p class="text-body-sm text-on-background">New task <span class="font-bold">assigned to you</span></p>
+<p class="text-[10px] text-outline mt-1 uppercase tracking-widest font-bold">12 mins ago</p>
+</div>
+</div>
+<!-- Notification 3 -->
+<div class="flex items-start gap-4 p-4 bg-surface rounded-lg border border-outline-variant/30 hover:border-primary/30 transition-all group">
+<div class="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+</div>
+<div>
+<p class="text-body-sm text-on-background"><span class="font-bold">Sarah</span> completed UI Redesign</p>
+<p class="text-[10px] text-outline mt-1 uppercase tracking-widest font-bold">1 hour ago</p>
+</div>
+</div>
+<!-- Notification 4 -->
+<div class="flex items-start gap-4 p-4 bg-surface rounded-lg border border-outline-variant/30 hover:border-primary/30 transition-all group">
+<div class="w-10 h-10 rounded-full bg-secondary-container/50 flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined text-sm">comment</span>
+</div>
+<div>
+<p class="text-body-sm text-on-background"><span class="font-bold">John</span> left a comment</p>
+<p class="text-[10px] text-outline mt-1 uppercase tracking-widest font-bold">3 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-primary text-on-primary rounded-full shadow-xl flex items-center justify-center transition-all hover:scale-110 active:scale-95 group z-50">
+<span class="material-symbols-outlined text-3xl group-hover:rotate-90 transition-transform duration-300" data-icon="add">add</span>
+</button>
+</body></html>

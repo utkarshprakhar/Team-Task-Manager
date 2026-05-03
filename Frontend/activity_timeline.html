@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TeamFocus - Activity &amp; Timeline</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#eedfdc",
+                        "surface-variant": "#ebe1da",
+                        "secondary": "#47645c",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f9efe8",
+                        "tertiary": "#675c5a",
+                        "error": "#ba1a1a",
+                        "on-background": "#1f1b17",
+                        "surface-container-highest": "#ebe1da",
+                        "surface": "#fff8f5",
+                        "surface-container": "#f6ece5",
+                        "secondary-fixed-dim": "#adcdc3",
+                        "on-surface-variant": "#50453b",
+                        "primary": "#7f5629",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#fcf2eb",
+                        "tertiary-fixed-dim": "#d2c3c1",
+                        "on-tertiary-container": "#403735",
+                        "on-secondary-container": "#4d6a62",
+                        "on-primary-container": "#543106",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#ada09d",
+                        "secondary-container": "#c9eadf",
+                        "primary-container": "#cc9966",
+                        "primary-fixed": "#ffdcbd",
+                        "on-tertiary-fixed": "#211a18",
+                        "on-surface": "#1f1b17",
+                        "inverse-primary": "#f3bc86",
+                        "surface-dim": "#e2d8d2",
+                        "surface-container-high": "#f0e6e0",
+                        "on-primary-fixed-variant": "#643e13",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#2c1600",
+                        "inverse-surface": "#352f2b",
+                        "surface-tint": "#7f5629",
+                        "primary-fixed-dim": "#f3bc86",
+                        "on-secondary-fixed-variant": "#2f4c44",
+                        "on-secondary-fixed": "#02201a",
+                        "secondary-fixed": "#c9eadf",
+                        "on-error-container": "#93000a",
+                        "outline": "#827569",
+                        "background": "#fff8f5",
+                        "outline-variant": "#d4c4b6",
+                        "on-tertiary-fixed-variant": "#4e4543",
+                        "surface-bright": "#fff8f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "md": "24px",
+                        "xs": "4px",
+                        "margin": "32px",
+                        "lg": "40px",
+                        "gutter": "24px",
+                        "xl": "64px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "button": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h2": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "h3": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "button": ["16px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #EFECE9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CC996644;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full w-72 flex flex-col p-6 gap-2 bg-[#F7F5F3] dark:bg-stone-800 rounded-r-[32px] border-r border-[#594F4D]/10 shadow-[0px_10px_30px_rgba(89,79,77,0.05)] z-50">
+<div class="flex items-center gap-4 px-4 py-6 mb-4">
+<div class="w-12 h-12 bg-primary-container rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl">task_alt</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-[#594F4D] dark:text-stone-200">Task Manager</h1>
+<p class="text-xs font-semibold text-[#594F4D]/60 uppercase tracking-widest">Soft Efficiency</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 text-[#594F4D] dark:text-stone-400 px-6 py-3 hover:bg-[#594F4D]/5 rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-lg text-label-lg">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-[#594F4D] dark:text-stone-400 px-6 py-3 hover:bg-[#594F4D]/5 rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="font-label-lg text-label-lg">Projects</span>
+</a>
+<a class="flex items-center gap-3 text-[#594F4D] dark:text-stone-400 px-6 py-3 hover:bg-[#594F4D]/5 rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">view_kanban</span>
+<span class="font-label-lg text-label-lg">Kanban</span>
+</a>
+<a class="flex items-center gap-3 text-[#594F4D] dark:text-stone-400 px-6 py-3 hover:bg-[#594F4D]/5 rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-lg text-label-lg">Analytics</span>
+</a>
+<!-- Active State: Activity Log -->
+<a class="flex items-center gap-3 bg-[#CC9966] text-white rounded-full px-6 py-3 shadow-lg shadow-[#CC9966]/20 transition-transform Active:translate-x-1" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-lg text-label-lg">Activity Log</span>
+</a>
+<a class="flex items-center gap-3 text-[#594F4D] dark:text-stone-400 px-6 py-3 hover:bg-[#594F4D]/5 rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">timeline</span>
+<span class="font-label-lg text-label-lg">Timeline</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-[#594F4D]/5 flex flex-col gap-2">
+<a class="flex items-center gap-3 text-[#594F4D] dark:text-stone-400 px-6 py-3 hover:bg-[#594F4D]/5 rounded-full" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-[#594F4D] dark:text-stone-400 px-6 py-3 hover:bg-[#594F4D]/5 rounded-full" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-lg text-label-lg">Support</span>
+</a>
+<div class="mt-4 p-4 bg-secondary-container/30 rounded-3xl flex items-center gap-3">
+<img alt="Profile" class="w-10 h-10 rounded-full object-cover border-2 border-white" data-alt="A close-up professional portrait of a woman in her late 20s with a warm, friendly expression. She has short dark hair and is wearing a soft cream-colored sweater. The lighting is diffused and natural, set against a blurred workspace background with soft beige and wooden accents. The overall aesthetic is clean, minimalist, and perfectly aligned with a professional yet approachable team productivity application." src="https://lh3.googleusercontent.com/aida/ADBb0uiRzvXAHk3p3eWyomOWXUL9zXbpypZ6jwHuFGjbD1SJaY-JIpU01O7oGLu5EH8QtV1DyjBkYKc3bUqCXuFRZL0aGfvywH3UD7Eqk4xohSaFTdw5bEdfjftLRCX6gH8cEGjmi2KUvJEt-u6TdZEjelXWDqHaIcPL-56G9hpmPrMPUqPggMdSb635pxtSiFcsS1nUclWqX3qyQI-tDCIYesOnt4_VsDtW5mvRZTzIX6kZyV0GGibBl7OTyUM-AezYF6ULXsIdWdwZNw"/>
+<div>
+<p class="text-sm font-bold text-on-secondary-container">Sarah Jenkins</p>
+<p class="text-[10px] text-on-secondary-container/70 uppercase font-black">Project Lead</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-72 min-h-screen p-margin">
+<!-- TopAppBar (Shared Component Implementation) -->
+<header class="flex justify-between items-center w-full px-8 py-4 bg-[#EFECE9] dark:bg-stone-900 sticky top-0 z-40 mb-8">
+<div class="flex items-center gap-8">
+<h2 class="text-2xl font-black text-[#CC9966] tracking-tight font-['Plus_Jakarta_Sans']">Activity &amp; Timeline</h2>
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
+<input class="pl-12 pr-6 py-3 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary-container w-80 text-sm font-body-sm transition-all shadow-sm" placeholder="Search activities..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-3 rounded-full text-stone-500 hover:bg-stone-200/50 transition-transform active:scale-90">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-3 rounded-full text-stone-500 hover:bg-stone-200/50 transition-transform active:scale-90">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<div class="max-w-[1440px] mx-auto space-y-10">
+<!-- Timeline Gantt Section -->
+<section class="bg-surface-container-low rounded-lg p-md shadow-[0px_10px_30px_rgba(89,79,77,0.05)] border border-surface-variant/50">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Timeline View</h3>
+<p class="text-body-sm text-outline">March 2024 Schedule Overview</p>
+</div>
+<div class="flex gap-2">
+<div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full text-xs font-bold border border-surface-variant shadow-sm">
+<span class="w-3 h-3 rounded-full bg-error"></span> Overdue
+                        </div>
+<div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full text-xs font-bold border border-surface-variant shadow-sm">
+<span class="w-3 h-3 rounded-full bg-[#FFD700]"></span> Today
+                        </div>
+<div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full text-xs font-bold border border-surface-variant shadow-sm">
+<span class="w-3 h-3 rounded-full bg-secondary"></span> Completed
+                        </div>
+</div>
+</div>
+<!-- Gantt Chart Shell -->
+<div class="overflow-x-auto custom-scrollbar pb-4">
+<div class="min-w-[1000px]">
+<!-- Date Header -->
+<div class="grid grid-cols-[200px_1fr] border-b border-surface-variant mb-4">
+<div class="p-4 font-bold text-outline text-xs uppercase tracking-widest">Project Phase</div>
+<div class="grid grid-cols-7 text-center font-bold text-on-surface-variant text-xs py-4">
+<div>Mon 11</div>
+<div>Tue 12</div>
+<div class="text-primary font-black">Wed 13 (Today)</div>
+<div>Thu 14</div>
+<div>Fri 15</div>
+<div class="text-outline/50">Sat 16</div>
+<div class="text-outline/50">Sun 17</div>
+</div>
+</div>
+<!-- Gantt Rows -->
+<div class="space-y-4">
+<!-- Overdue Task -->
+<div class="grid grid-cols-[200px_1fr] items-center">
+<div class="px-4 text-sm font-semibold text-on-surface">API Authentication</div>
+<div class="relative h-10 bg-surface-container rounded-full overflow-hidden">
+<div class="absolute left-[5%] w-[25%] h-full bg-error opacity-20"></div>
+<div class="absolute left-[5%] top-1/2 -translate-y-1/2 w-[25%] h-6 bg-error rounded-full flex items-center px-4 text-[10px] text-white font-bold shadow-sm">
+                                        OVERDUE: Security Audit
+                                    </div>
+</div>
+</div>
+<!-- Completed Task -->
+<div class="grid grid-cols-[200px_1fr] items-center">
+<div class="px-4 text-sm font-semibold text-on-surface">UI Components</div>
+<div class="relative h-10 bg-surface-container rounded-full overflow-hidden">
+<div class="absolute left-[0%] w-[40%] h-full bg-secondary opacity-10"></div>
+<div class="absolute left-[0%] top-1/2 -translate-y-1/2 w-[40%] h-6 bg-secondary rounded-full flex items-center px-4 text-[10px] text-white font-bold">
+                                        COMPLETED: Button Library
+                                    </div>
+</div>
+</div>
+<!-- Current Task -->
+<div class="grid grid-cols-[200px_1fr] items-center">
+<div class="px-4 text-sm font-semibold text-on-surface">Dashboard Layout</div>
+<div class="relative h-10 bg-surface-container rounded-full overflow-hidden">
+<!-- Current Day Marker Line -->
+<div class="absolute left-[35.7%] w-[1px] h-full bg-primary/30 z-10 border-l border-dashed border-primary"></div>
+<div class="absolute left-[30%] w-[45%] h-full bg-[#FFD700] opacity-15"></div>
+<div class="absolute left-[30%] top-1/2 -translate-y-1/2 w-[45%] h-6 bg-[#FFD700] rounded-full flex items-center px-4 text-[10px] text-primary-fixed-variant font-bold shadow-sm">
+                                        TODAY: Grid Refinement
+                                    </div>
+</div>
+</div>
+<!-- Future Task -->
+<div class="grid grid-cols-[200px_1fr] items-center">
+<div class="px-4 text-sm font-semibold text-on-surface text-on-surface/50">Mobile Testing</div>
+<div class="relative h-10 bg-surface-container rounded-full overflow-hidden">
+<div class="absolute left-[65%] w-[30%] h-full bg-outline/5"></div>
+<div class="absolute left-[65%] top-1/2 -translate-y-1/2 w-[30%] h-6 border-2 border-dashed border-outline/30 rounded-full flex items-center px-4 text-[10px] text-outline font-bold">
+                                        PLANNED: iOS Build
+                                    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Activity Log Layout: Bento Grid Style -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Main Feed -->
+<div class="lg:col-span-2 space-y-gutter">
+<div class="bg-surface-container-low rounded-lg p-md shadow-sm border border-surface-variant/30">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-h3 text-h3 text-on-surface">Real-time Feed</h3>
+<div class="flex gap-2">
+<span class="bg-primary-container/10 text-primary px-4 py-1 rounded-full text-xs font-bold">Latest First</span>
+</div>
+</div>
+<!-- Timeline Feed -->
+<div class="space-y-8 relative before:absolute before:left-[19px] before:top-2 before:bottom-0 before:w-[2px] before:bg-surface-variant/50">
+<!-- Feed Item 1 -->
+<div class="relative pl-14 flex items-start gap-4">
+<div class="absolute left-0 w-10 h-10 rounded-full bg-white border-2 border-secondary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1 bg-white p-6 rounded-lg shadow-[0px_4px_20px_rgba(89,79,77,0.03)] border border-surface-variant/20 hover:border-primary/20 transition-all group">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface">Sarah Jenkins</span>
+<span class="text-body-sm text-outline">completed</span>
+<span class="font-bold text-secondary">'API Integration'</span>
+</div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-tighter">12m ago</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">Authentication middleware successfully hooked into the main core. All unit tests passed with 100% coverage.</p>
+<div class="mt-4 flex gap-2">
+<span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-[10px] font-bold">#Backend</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-[10px] font-bold">Sprint 4</span>
+</div>
+</div>
+</div>
+<!-- Feed Item 2 -->
+<div class="relative pl-14 flex items-start gap-4">
+<div class="absolute left-0 w-10 h-10 rounded-full bg-white border-2 border-primary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-primary text-xl">add_comment</span>
+</div>
+<div class="flex-1 bg-white p-6 rounded-lg shadow-[0px_4px_20px_rgba(89,79,77,0.03)] border border-surface-variant/20">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface">Marcus Thorne</span>
+<span class="text-body-sm text-outline">commented on</span>
+<span class="font-bold text-primary">'Dark Mode Assets'</span>
+</div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-tighter">2h ago</span>
+</div>
+<div class="bg-surface-container p-4 rounded-2xl italic text-body-sm text-on-surface-variant mb-4">
+                                        "Let's make sure the elevation tokens are correctly mapped to the stone palette for the dark surfaces."
+                                    </div>
+<div class="flex items-center gap-3">
+<img alt="Marcus" class="w-6 h-6 rounded-full object-cover" data-alt="A clean-shaven man in his 30s with a sharp, professional look and wire-rimmed glasses. He is looking slightly away from the camera in a modern loft office environment with warm indoor lighting. The photograph is shot in a high-key, bright style with soft contrast, emphasizing a clean and organized work culture." src="https://lh3.googleusercontent.com/aida/ADBb0ugNZt95QnuzyIcjDXn1kOBi-k0G7djeFpTdP9PrSNpOL_SnTG4jKntL5yt3i6sj_Vd8d0ZzhGFlidM_uGjgSzjFp6aO-Kr5zM8l9EgHJ5gMCZi5lvTpkug2DS2jvzM0ghxWptUT_rtw5rXUH01x-IlljWB1UsRsXL0NvytX00EwXmldRYWDQfZdbPJxBALM4Rj4NdEPyV8Q2jnKa9TcYyxIlWiMKpHEom6NDulMhp_tc-R0uCU4lAZtGVC_vUBwyozH0bKF5R8xgg"/>
+<span class="text-xs font-semibold text-outline">Designer Team Lead</span>
+</div>
+</div>
+</div>
+<!-- Feed Item 3 -->
+<div class="relative pl-14 flex items-start gap-4">
+<div class="absolute left-0 w-10 h-10 rounded-full bg-white border-2 border-error flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-error text-xl">error_outline</span>
+</div>
+<div class="flex-1 bg-white p-6 rounded-lg shadow-[0px_4px_20px_rgba(89,79,77,0.03)] border border-error/10">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface">System Alert</span>
+<span class="text-body-sm text-error font-semibold">Flagged Overdue</span>
+</div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-tighter">5h ago</span>
+</div>
+<p class="text-body-sm text-on-surface-variant font-bold">'Database Migration' task has exceeded the allocated sprint window.</p>
+<button class="mt-4 px-6 py-2 bg-error text-white rounded-full text-xs font-bold hover:bg-error/90 transition-colors">Reschedule Task</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Stats & Meta -->
+<div class="space-y-gutter">
+<!-- Project Status Card -->
+<div class="bg-primary text-white rounded-lg p-md shadow-lg shadow-primary/20 relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="font-h3 text-xl mb-1">Sprint Progress</h4>
+<p class="text-primary-fixed text-sm mb-6">Current Phase: Beta Launch</p>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-xs font-bold uppercase mb-2 tracking-widest opacity-80">
+<span>Completion</span>
+<span>78%</span>
+</div>
+<div class="h-3 bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-white rounded-full w-[78%]"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4">
+<div class="bg-white/10 p-4 rounded-3xl backdrop-blur-sm">
+<p class="text-[10px] uppercase font-bold opacity-70">Active</p>
+<p class="text-2xl font-black">14</p>
+</div>
+<div class="bg-white/10 p-4 rounded-3xl backdrop-blur-sm">
+<p class="text-[10px] uppercase font-bold opacity-70">Done</p>
+<p class="text-2xl font-black">42</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract BG Shape -->
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+</div>
+<!-- Team Activity -->
+<div class="bg-white rounded-lg p-md border border-surface-variant/30 shadow-sm">
+<h4 class="font-bold text-on-surface mb-4">Active Contributors</h4>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded-full border-2 border-primary-container" data-alt="Close-up of a smiling young woman with short dark hair in a bright professional workspace, representing team collaboration and productivity." src="https://lh3.googleusercontent.com/aida/ADBb0uiRzvXAHk3p3eWyomOWXUL9zXbpypZ6jwHuFGjbD1SJaY-JIpU01O7oGLu5EH8QtV1DyjBkYKc3bUqCXuFRZL0aGfvywH3UD7Eqk4xohSaFTdw5bEdfjftLRCX6gH8cEGjmi2KUvJEt-u6TdZEjelXWDqHaIcPL-56G9hpmPrMPUqPggMdSb635pxtSiFcsS1nUclWqX3qyQI-tDCIYesOnt4_VsDtW5mvRZTzIX6kZyV0GGibBl7OTyUM-AezYF6ULXsIdWdwZNw"/>
+<span class="text-sm font-semibold">Sarah J.</span>
+</div>
+<div class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="w-2 h-2 rounded-full bg-surface-variant"></span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded-full border-2 border-secondary" data-alt="A focused portrait of a professional woman wearing headphones and working intently in a modern, plant-filled office. The atmosphere is serene and highly productive, with soft afternoon sunlight streaming through large windows. The lighting is balanced with neutral earthy tones and pops of green from indoor plants, creating a calming workspace aesthetic." src="https://lh3.googleusercontent.com/aida/ADBb0ujQ7J6rsYfLteW8Gkn6sWfqPslkffKFDE3wERyFPr4Mbznx9w5mCk20f2nQ5arH75mWJHT76HX3Q6X6_UMb-iDooMFKYJQkUtWeZicOFg4M1CY_LBuSZmfpg0-Vl0bk7gUNE9aEDTqorEZiZ6G8HI17pQubZy-an9iIQ_iestLIbQ803XfOK71XotLoNi4buZKanp3mlsNLTQTSu9LduW2unrWCYXOzF4l_oZzBaagyN5r4F5KUtBqIHR5-xjBCHr6quL6JC6QM0Q"/>
+<span class="text-sm font-semibold">Elena R.</span>
+</div>
+<div class="flex gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+</div>
+<div class="flex items-center justify-between opacity-50">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded-full grayscale" data-alt="A professional male designer with glasses in a minimalist workspace, looking thoughtful. The image style is bright with soft lighting and neutral colors." src="https://lh3.googleusercontent.com/aida/ADBb0ugNZt95QnuzyIcjDXn1kOBi-k0G7djeFpTdP9PrSNpOL_SnTG4jKntL5yt3i6sj_Vd8d0ZzhGFlidM_uGjgSzjFp6aO-Kr5zM8l9EgHJ5gMCZi5lvTpkug2DS2jvzM0ghxWptUT_rtw5rXUH01x-IlljWB1UsRsXL0NvytX00EwXmldRYWDQfZdbPJxBALM4Rj4NdEPyV8Q2jnKa9TcYyxIlWiMKpHEom6NDulMhp_tc-R0uCU4lAZtGVC_vUBwyozH0bKF5R8xgg"/>
+<span class="text-sm font-semibold">Marcus T.</span>
+</div>
+<span class="text-[10px] font-bold uppercase tracking-widest">Away</span>
+</div>
+</div>
+<button class="w-full mt-6 py-3 border border-surface-variant text-outline rounded-full text-xs font-bold hover:bg-surface-variant/20 transition-colors">View All Members</button>
+</div>
+<!-- Task Quick Create -->
+<div class="bg-secondary-container/20 rounded-lg p-md border-2 border-dashed border-secondary/20 flex flex-col items-center justify-center text-center">
+<div class="w-12 h-12 rounded-full bg-secondary text-white flex items-center justify-center mb-4 shadow-lg shadow-secondary/20">
+<span class="material-symbols-outlined">add</span>
+</div>
+<h4 class="font-bold text-on-secondary-container">Add Quick Note</h4>
+<p class="text-xs text-on-secondary-container/60 mt-1">Capture updates instantly</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Shared Component Strategy) -->
+<button class="fixed bottom-10 right-10 w-16 h-16 bg-[#CC9966] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-transform z-50 group">
+<span class="material-symbols-outlined text-3xl">add</span>
+<span class="absolute right-full mr-4 bg-on-surface text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Create Task</span>
+</button>
+</body></html>
