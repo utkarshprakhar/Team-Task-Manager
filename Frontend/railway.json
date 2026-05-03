@@ -4,5 +4,10 @@
   },
   "deploy": {
     "startCommand": "npx serve -s dist -l $PORT"
+  },
+  "phases": {
+    "install": {
+      "cmds": ["npm install"]
+    }
   }
 }
